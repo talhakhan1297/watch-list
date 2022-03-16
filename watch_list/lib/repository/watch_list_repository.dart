@@ -2,6 +2,7 @@ import 'dart:convert';
 
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:http/http.dart';
+import 'package:watch_list/models/movie.dart';
 import 'package:watch_list/models/search_result.dart';
 
 class WatchListRepository {
