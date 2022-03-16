@@ -4,7 +4,9 @@ import 'package:watch_list/cubit/watch_list_cubit.dart';
 import 'package:watch_list/widgets/movie_item.dart';
 
 class MoviesView extends StatelessWidget {
-  const MoviesView({Key? key}) : super(key: key);
+  const MoviesView({Key? key, required this.handleTap}) : super(key: key);
+
+  final Function(int) handleTap;
 
   @override
   Widget build(BuildContext context) {
@@ -24,7 +26,10 @@ class MoviesView extends StatelessWidget {
           ),
           delegate: SliverChildBuilderDelegate(
             (context, index) {
-              return MovieItem(movie: state.movieState.model![index]);
+              return MovieItem(
+                movie: state.movieState.model![index],
+                handleTap: handleTap,
+              );
             },
             childCount: state.movieState.model!.length,
           ),

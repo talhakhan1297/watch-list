@@ -7,7 +7,9 @@ import 'package:watch_list/widgets/search_field.dart';
 import 'package:watch_list/widgets/search_result.dart';
 
 class HomeView extends StatefulWidget {
-  const HomeView({Key? key}) : super(key: key);
+  const HomeView({Key? key, required this.handleTap}) : super(key: key);
+
+  final Function(int) handleTap;
 
   @override
   State<HomeView> createState() => _HomeViewState();
@@ -59,7 +61,7 @@ class _HomeViewState extends State<HomeView> {
                     ),
                   ),
                 ),
-                const MoviesView(),
+                MoviesView(handleTap: widget.handleTap),
               ],
             ),
           ],

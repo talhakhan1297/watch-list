@@ -16,6 +16,7 @@ dependencies:
   flutter_bloc: ^8.0.1
   firebase_core: ^1.13.1
   http: ^0.13.4
+  url_strategy: ^0.2.0
 
 dev_dependencies:
   flutter_test:
