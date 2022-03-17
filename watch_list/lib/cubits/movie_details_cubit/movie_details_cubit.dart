@@ -24,10 +24,11 @@ class MovieDetailsCubit extends Cubit<MovieDetailsState> {
 
     try {
       final result = await repository.getMovieDetail(id);
+      final cast = await repository.getCast(id);
       emit(
         state.copyWith(
           movieDetailsState: GeneralApiState(
-            model: result,
+            model: result.copyWith(cast: cast),
             apiCallState: APICallState.loaded,
           ),
         ),

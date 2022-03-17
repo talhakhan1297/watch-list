@@ -66,6 +66,29 @@ class WatchListRepository {
     return MovieDetails.fromJson(decoded);
   }
 
+  Future<CastList> getCast(int id) async {
+    final castRequest = Uri.https(
+      _baseURL,
+      '/3/movie/$id/credits',
+      {
+        'api_key': _apiKey,
+        'language': 'en-US',
+      },
+    );
+    final castResponse = await _httpClient.get(castRequest);
+    if (castResponse.statusCode != 200) {
+      throw 'Cast Request Failure';
+    }
+
+    final decoded = jsonDecode(castResponse.body) as Map<String, dynamic>;
+
+    if (decoded.isEmpty) {
+      throw 'Cast Not Found Failure';
+    }
+
+    return CastList.fromJson(decoded);
+  }
+
   Stream<List<Movie>> streamMovies() =>
       movies.snapshots().map((event) => event.docs
           .map((e) => Movie.fromJson(e.data(), docId: e.reference.id))
