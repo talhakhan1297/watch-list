@@ -42,9 +42,7 @@ class KRouteInformationParser
 class KRouterDelegate extends RouterDelegate<List<RouteSettings>>
     with ChangeNotifier, PopNavigatorRouterDelegateMixin<List<RouteSettings>> {
   @override
-  final GlobalKey<NavigatorState> navigatorKey;
-
-  KRouterDelegate() : navigatorKey = GlobalKey<NavigatorState>();
+  final navigatorKey = GlobalKey<NavigatorState>();
 
   @override
   List<Page> get currentConfiguration => List.of(_pages);
@@ -55,7 +53,7 @@ class KRouterDelegate extends RouterDelegate<List<RouteSettings>>
   Widget build(BuildContext context) {
     return Navigator(
       key: navigatorKey,
-      pages: _pages,
+      pages: List.of(_pages),
       onPopPage: _onPopPage,
     );
   }
@@ -85,12 +83,16 @@ class KRouterDelegate extends RouterDelegate<List<RouteSettings>>
     late Widget child;
     switch (routeSettings.name) {
       case '/detail':
-        child = DetailView(arg: routeSettings.arguments as Map);
+        child =
+            DetailView(arg: routeSettings.arguments! as Map<String, String>);
         break;
       case '/':
       default:
         child = HomeView(
-          handleTap: (id) => pushPage(name: '/detail', arguments: {'id': id}),
+          handleTap: (id) => pushPage(
+            name: '/detail',
+            arguments: {'id': id.toString()},
+          ),
         );
         break;
     }
