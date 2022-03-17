@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:watch_list/cubit/watch_list_cubit.dart';
+import 'package:watch_list/cubits/watch_list_cubit/watch_list_cubit.dart';
 import 'package:watch_list/repository/watch_list_repository.dart';
 import 'package:watch_list/view/movies_view.dart';
 import 'package:watch_list/widgets/search_field.dart';
@@ -27,7 +27,9 @@ class _HomeViewState extends State<HomeView> {
   @override
   Widget build(BuildContext context) {
     return BlocProvider(
-      create: (context) => WatchListCubit(repository: WatchListRepository()),
+      create: (context) => WatchListCubit(
+        repository: context.read<WatchListRepository>(),
+      ),
       child: Scaffold(
         body: Stack(
           children: [

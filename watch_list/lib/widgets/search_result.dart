@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:watch_list/cubit/watch_list_cubit.dart';
+import 'package:watch_list/cubits/watch_list_cubit/watch_list_cubit.dart';
 import 'package:watch_list/models/search_result.dart';
 import 'package:watch_list/utils/general_api_state.dart';
 

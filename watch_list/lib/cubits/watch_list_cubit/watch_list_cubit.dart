@@ -3,6 +3,7 @@ import 'dart:async';
 import 'package:bloc/bloc.dart';
 import 'package:equatable/equatable.dart';
 import 'package:watch_list/models/movie.dart';
+import 'package:watch_list/models/movie_details.dart';
 import 'package:watch_list/models/search_result.dart';
 import 'package:watch_list/repository/watch_list_repository.dart';
 import 'package:watch_list/utils/general_api_state.dart';

@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:watch_list/cubit/watch_list_cubit.dart';
+import 'package:watch_list/cubits/watch_list_cubit/watch_list_cubit.dart';
 import 'package:watch_list/models/movie.dart';
 
 class MovieItem extends StatelessWidget {
@@ -18,9 +18,6 @@ class MovieItem extends StatelessWidget {
     return InkWell(
       onTap: () {
         handleTap(movie.id);
-        // context
-        //     .read<KRouterDelegate>()
-        //     .pushPage(name: '/detail', arguments: movie.id);
       },
       child: Stack(
         children: [

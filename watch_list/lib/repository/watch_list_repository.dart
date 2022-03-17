@@ -3,6 +3,7 @@ import 'dart:convert';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:http/http.dart';
 import 'package:watch_list/models/movie.dart';
+import 'package:watch_list/models/movie_details.dart';
 import 'package:watch_list/models/search_result.dart';
 
 class WatchListRepository {
@@ -40,6 +41,29 @@ class WatchListRepository {
     }
 
     return SearchResult.fromJson(decoded);
+  }
+
+  Future<MovieDetails> getMovieDetail(int id) async {
+    final movieRequest = Uri.https(
+      _baseURL,
+      '/3/movie/$id',
+      {
+        'api_key': _apiKey,
+        'language': 'en-US',
+      },
+    );
+    final movieResponse = await _httpClient.get(movieRequest);
+    if (movieResponse.statusCode != 200) {
+      throw 'Movie Request Failure';
+    }
+
+    final decoded = jsonDecode(movieResponse.body) as Map<String, dynamic>;
+
+    if (decoded.isEmpty) {
+      throw 'Movie Not Found Failure';
+    }
+
+    return MovieDetails.fromJson(decoded);
   }
 
   Stream<List<Movie>> streamMovies() =>

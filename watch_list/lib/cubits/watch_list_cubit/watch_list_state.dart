@@ -12,6 +12,7 @@ class WatchListState extends Equatable {
   WatchListState copyWith({
     GeneralApiState<SearchResult>? searchState,
     GeneralApiState<List<Movie>>? movieState,
+    GeneralApiState<MovieDetails>? movieDetailsState,
   }) {
     return WatchListState(
       searchState: searchState ?? this.searchState,
