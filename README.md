@@ -10,7 +10,7 @@ To run the app either use the launch configuration in VSCode/Android Studio or u
 $ flutter run
 ```
 
-https://watch-list-flutter.web.app/
+**Run this App at: https://watch-list-flutter.web.app/**
 
 _\*Watch List works on Web, iOS and Android._
 
